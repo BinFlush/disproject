@@ -16,6 +16,7 @@ nltk = "*"
 regex = "*"
 black = "*"
 lxml = "*"
+zipfile = "*"
 
 [dev-packages]
 
