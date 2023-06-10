@@ -29,7 +29,7 @@ def main():
 
 # Extract data if no data (to reduce load on KU webpage):
 def initial_data():
-    if not os.path.isdir(DATA_DIR):
+    if not os.path.isdir(DATA_DIR+'/pages'):
         ensure_dir_exists(DATA_DIR)
         print("EXTRACTING INITIAL DATA")
         with zipfile.ZipFile(initial_data_path, 'r') as zip_ref:
