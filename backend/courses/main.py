@@ -1,16 +1,19 @@
 from parsing import get_all_info
 from scraper import get_sitemap_urls, cache_pages, ensure_dir_exists
 import os
+import zipfile
 import json
 import multiprocessing as mp
 import nltk
 
 nltk_path = "../../data/nltk_resources"
 DATA_DIR = "../../data"  # where to store the data
+initial_data_path = "../../courses.zip"
 json_dir = f"{DATA_DIR}/json"
 
 
 def main():
+    initial_data()
     nltk_packages = ["words", "averaged_perceptron_tagger", "universal_tagset"]
     cache_pages()
     sitemap_urls = get_sitemap_urls()
@@ -22,6 +25,17 @@ def main():
     nltk.data.path.append(nltk_path)
     with mp.Pool(8) as p:
         p.map(convert_to_json, sitemap_urls)
+
+
+# Extract data if no data (to reduce load on KU webpage):
+def initial_data():
+    if not os.path.isdir(DATA_DIR):
+        ensure_dir_exists(DATA_DIR)
+        print("EXTRACTING INITIAL DATA")
+        with zipfile.ZipFile(initial_data_path, 'r') as zip_ref:
+            zip_ref.extractall(DATA_DIR)
+            print("ZIP file downloaded and extracted successfully.")
+        
 
 
 def convert_to_json(url: str):

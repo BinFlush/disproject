@@ -747,7 +747,7 @@ def final_cleanup(c):
     relevant_desc = [
         "description",
         "Learning Outcome",
-        "Recommended Academic Qualifications",
+        #"Recommended Academic Qualifications",
     ]
     relevant_dict = {'description': 'Course Description',
                      'Learning Outcome': 'Learning Outcome',
