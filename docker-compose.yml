@@ -66,6 +66,7 @@ services:
     build: ./backend/courses
     restart: on-failure
     volumes:
+      - ./courses.zip:/app/courses.zip
       - ./data:/data
 
 networks:

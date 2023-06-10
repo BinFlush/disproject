@@ -8,7 +8,7 @@ import nltk
 
 nltk_path = "../../data/nltk_resources"
 DATA_DIR = "../../data"  # where to store the data
-initial_data_path = "../../courses.zip"
+initial_data_path = "/app/courses.zip"
 json_dir = f"{DATA_DIR}/json"
 
 
